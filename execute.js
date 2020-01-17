@@ -41,12 +41,34 @@ var checkSpan = (name) => {
     }
         console.log(x);
     }
+
+// 抓取select的值
+    function jsSelectItemByValue(objSelect, objItemText) {                  
+        for (var i = 0; i < objSelect.options.length; i++) {        
+            if (objSelect.options[i].text == objItemText) {        
+                objSelect.options[i].selected = true;   
+                break;       
+            }        
+        } 
+   } 
+
 //select option 改
-var always = () => {
+var always = (inputData) => {
+    console.log(inputData);
     if(checkSpan("自行選位") === "check"){
+        var ticket = items.checktest.ticket;
+        var ticketNumber = items.checktest.ticketNumber;
+        var idNumber = items.checktest.idNumber;
+        var creditNumber = items.checktest.creditNumber;
+        var creditYear = items.checktest.creditYear;
+        var creditMonth = items.checktest.creditMonth;
+        var creditCheck = items.checktest.creditCheck;
+
         //選要買的票價 [0] 就是第一個 依此類推..
-        if(a = document.getElementsByClassName("btn-default plus")[0]){
-            a.click();
+        if(a = document.getElementsByClassName("btn-default plus")[(ticket+1)]){
+            for (i = 0;i < ticketNumber; i++) {
+                a.click();
+            }
         }
         if(a = document.getElementsByClassName("ng-pristine ng-untouched ng-valid ng-empty")[0]){
             a.click();
@@ -62,9 +84,10 @@ var always = () => {
             a.click();
         }
         
-        /*if(a = document.getElementsByClassName("ng-dirty ng-valid-parse ng-touched ng-invalid ng-empty ng-invalid-required ng-valid-pattern")[0]){
-            a.value = "A128418109";
+        if(a = document.getElementsByClassName("ng-dirty ng-valid-parse ng-touched ng-invalid ng-empty ng-invalid-required ng-valid-pattern")[0]){
+            a.value = idNumber;
         }
+        /*
         if(a = document.getElementsByClassName("ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched")[0]){
             a.value = "A128418109";
         }*/
@@ -77,13 +100,6 @@ var always = () => {
 var getChrome = (checkFun) => {
     chrome.storage.local.get("checktest", items=>{
         if(items.checktest){
-        var ticket = items.checktest.ticket;
-        var ticketNumber = items.checktest.ticketNumber;
-        var idNumber = items.checktest.idNumber;
-        var creditNumber = items.checktest.creditNumber;
-        var creditYear = items.checktest.creditYear;
-        var creditMonth = items.checktest.creditMonth;
-        var creditCheck = items.checktest.creditCheck;
         var timeCheckHour = items.checktest.timeCheckHour;
         var timeChecMin = items.checktest.timeChecMin;
         var timeCheckSecond = items.checktest.timeCheckSecond;
@@ -92,7 +108,7 @@ var getChrome = (checkFun) => {
         var timeNow=(NowDate.getHours()*10000)+(NowDate.getMinutes()*100)+(NowDate.getSeconds());
         var timeInput = (timeCheckHour*10000)+(timeChecMin*100)+(timeCheckSecond*1);
             if(startCheck == '0' && checkFun == 'start'){
-                setTimeout(always, 1000);
+                setTimeout(function(){always(items.checktest);}, 1000);
             }else if (startCheck == '0' && checkFun == 'time'){
                 if(timeNow <= timeInput){
                     console.log("開始倒數");
