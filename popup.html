@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="" ng-csp style="width:400px;">
+  <head>
+    <script src="jquery.js"></script>
+    <style type="text/css">
+    .inputtext {
+      width: 30px;
+    }
+    </style>
+    <title>翻轉 google </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./popup.js"></script>
+  </head>
+
+  <body id="body">
+    輸入你想要第價位(最高就是1,越低數字越大):
+    <input type="text" class="inputtext" id="ticket"><br />
+    輸入你想要的張數:
+    <input type="text" class="inputtext" id="ticketNumber"><br />
+    輸入你的身分證字號:
+    <input type="text" id="idNumber"><br />
+    輸入你的信用卡號:
+    <input type="text" id="creditNumber"><br />
+    輸入你的信用卡號年份(兩碼):<input type="text" class="inputtext" id="creditYear">月份：<input type="text" class="inputtext" id="creditMonth"><br />
+    輸入你的信用卡驗證碼:
+    <input type="text" class="inputtext" id="creditCheck"><br />
+    輸入重新整理的時間:(12:0:1或 16:23:0)
+    <input type="text" class="inputtext" id="timeCheckHour">時 <input type="text" class="inputtext" id="timeChecMin">分  <input type="text" class="inputtext" id="timeCheckSecond">秒<br />
+    <input type="radio" value="0"  name="startCheck">：開始
+    <input type="radio" value="1" checked  name="startCheck">：停止
+    <br />
+    <button id="saveData">儲存資料</button>
+    <button id="rotate">開始倒數</button>
+  </body>
+</html>

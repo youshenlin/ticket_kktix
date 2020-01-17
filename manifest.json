@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "kktix 搶票系統",
+    "description": "搶票系統 測試版",
+    "version": "1.0.0",
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "background": {
+        "scripts": ["jquery.js","execute.js"],
+        "persistent": false
+      },
+    "content_scripts": [
+      {
+        "matches": [
+         // "https://kktix.com/events/*",
+         "https://*/*"
+        ],
+        "js": [
+          "jquery.js",
+          "execute.js"
+        ]
+      }
+    ]
+  }
