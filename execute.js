@@ -12,7 +12,7 @@ var checkSpan = (name) => {
             return "check";
         }
     }
-  }
+  }//
   var clickbtn = (name,classname) => {
     var s = $(classname);
     for (i = 0;i < s.length; i++) {
