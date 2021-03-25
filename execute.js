@@ -56,22 +56,28 @@ var checkSpan = (name) => {
 var always = (inputData) => {
     console.log(inputData);
     if(checkSpan("自行選位") === "check"){
-        var ticket = items.checktest.ticket;
-        var ticketNumber = items.checktest.ticketNumber;
-        var idNumber = items.checktest.idNumber;
-        var creditNumber = items.checktest.creditNumber;
-        var creditYear = items.checktest.creditYear;
-        var creditMonth = items.checktest.creditMonth;
-        var creditCheck = items.checktest.creditCheck;
+        var ticket = inputData.checktest.ticket;
+        var ticketNumber = inputData.checktest.ticketNumber;
+        var idNumbertext = inputData.checktest.idNumber;
+        var creditNumber = inputData.checktest.creditNumber;
+        var creditYear = inputData.checktest.creditYear;
+        var creditMonth = inputData.checktest.creditMonth;
+        var creditCheck = inputData.checktest.creditCheck;
 
         //選要買的票價 [0] 就是第一個 依此類推..
-        if(a = document.getElementsByClassName("btn-default plus")[(ticket+1)]){
+        if(a = document.getElementsByClassName("btn-default plus")[(ticket-1)]){
+            console.log(123);
             for (i = 0;i < ticketNumber; i++) {
                 a.click();
             }
         }
-        if(a = document.getElementsByClassName("ng-pristine ng-untouched ng-valid ng-empty")[0]){
-            a.click();
+        if(a = document.getElementById("person_agree_terms")){
+            if(a.checked == false){
+                a.click();
+            }
+        }
+        if(a = document.getElementsByName("captcha_answer")[0]){
+            a.focus();
         }
         if(a = document.getElementsByClassName("btn btn-primary btn-lg ng-isolate-scope")[0]){
             a.click();
@@ -83,9 +89,26 @@ var always = (inputData) => {
         if(a = document.getElementsByClassName("btn btn-primary btn-lg ng-binding ng-isolate-scope")[0]){
             a.click();
         }
-        
-        if(a = document.getElementsByClassName("ng-dirty ng-valid-parse ng-touched ng-invalid ng-empty ng-invalid-required ng-valid-pattern")[0]){
-            a.value = idNumber;
+        if(a = document.getElementsByName("pickupType")){
+            for (let index = 0; index < a.length; index++) {
+                console.log(a[index].value);
+               if(a[index].value == 'famiport'){
+                a[index].click();
+               }
+                
+            }
+        }
+        if(a = document.getElementsByName("idNumber")[0]){
+            a.click();
+            a.value = inputData.checktest.idNumber;
+        }
+        if(a = document.getElementsByName("paymentMethodType")){
+            for (let index = 0; index < a.length; index++) {
+               if(a[index].value == 'ATM'){
+                a[index].click();
+               }
+                
+            }
         }
         /*
         if(a = document.getElementsByClassName("ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched")[0]){
@@ -108,7 +131,7 @@ var getChrome = (checkFun) => {
         var timeNow=(NowDate.getHours()*10000)+(NowDate.getMinutes()*100)+(NowDate.getSeconds());
         var timeInput = (timeCheckHour*10000)+(timeChecMin*100)+(timeCheckSecond*1);
             if(startCheck == '0' && checkFun == 'start'){
-                setTimeout(function(){always(items.checktest);}, 1000);
+                setInterval(function(){always(items);}, 1000);
             }else if (startCheck == '0' && checkFun == 'time'){
                 if(timeNow <= timeInput){
                     console.log("開始倒數");
