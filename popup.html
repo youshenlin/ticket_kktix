@@ -4,33 +4,30 @@
     <script src="jquery.js"></script>
     <style type="text/css">
     .inputtext {
-      width: 30px;
+      width: 120px;
+    }
+    .day {
+      width: 22px;
     }
     </style>
-    <title>翻轉 google </title>
+    <title>KKTIX 購票工具</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./popup.js"></script>
   </head>
 
   <body id="body">
-    輸入你想要第價位(最高就是1,越低數字越大):
-    <input type="text" class="inputtext" id="ticket"><br />
-    輸入你想要的張數:
-    <input type="text" class="inputtext" id="ticketNumber"><br />
-    輸入你的身分證字號:
-    <input type="text" id="idNumber"><br />
-    輸入你的信用卡號:
-    <input type="text" id="creditNumber"><br />
-    輸入你的信用卡號年份(兩碼):<input type="text" class="inputtext" id="creditYear">月份：<input type="text" class="inputtext" id="creditMonth"><br />
-    輸入你的信用卡驗證碼:
-    <input type="text" class="inputtext" id="creditCheck"><br />
-    輸入重新整理的時間:(12:0:1或 16:23:0)
-    <input type="text" class="inputtext" id="timeCheckHour">時 <input type="text" class="inputtext" id="timeChecMin">分  <input type="text" class="inputtext" id="timeCheckSecond">秒<br />
-    <input type="radio" value="0"  name="startCheck">：開始
-    <input type="radio" value="1" checked  name="startCheck">：停止
-    <br />
-    <button id="saveData">儲存資料</button>
-    <button id="rotate">開始倒數</button>
+    想要的價位：<input type="text" class="inputtext" id="ticket"><br />　　　　　　<b>1 代表最高票價，2 就是第二票價，以此類推</b><br />
+    想要的張數：<input type="text" class="inputtext" id="ticketNumber"><br />　　　　　　<b>張數暫時故障中...待修復，目前僅供最大張數</b><br />
+    身分證字號：<input type="text" class="inputtext" id="idNumber"><br />　　　　　　<b>供取票時使用，外籍人士請輸入護照號碼</b><br />
+    信用卡卡號：<input type="text" class="inputtext" id="creditNumber"><br />　　　　　　<b>信用卡資料留空，則自動選 ATM 虛擬帳號付款</b><br />
+    信用卡年份：<input type="text" class="inputtext" id="creditYear"><br />
+	信用卡月份：<input type="text" class="inputtext" id="creditMonth"><br />
+    背面安全碼：<input type="text" class="inputtext" id="creditCheck"><br />
+    票開賣時間：<input type="text" class="day" id="timeCheckHour">時<input type="text" class="day" id="timeChecMin">分<input type="text" class="day" id="timeCheckSecond">秒<br />　　　　　　<b>範例：下午1點1分1秒，則輸入 13:1:1</b><br /><br />
+	<input type="radio" value="0"  name="startCheck">：啟動本工具<input type="radio" value="1" checked  name="startCheck">：停止本工具
+    <br /><br />
+    <button id="saveData">儲存資料｜以上填寫好後按儲存</button><br>
+    <button id="rotate">開始倒數｜設定時間，準備搶票</button>
   </body>
 </html>
