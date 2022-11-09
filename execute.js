@@ -55,50 +55,50 @@ function jsSelectItemByValue(objSelect, objItemText) {
 //select option 改
 var always = (inputData) => {
   //   console.log(inputData);
-  if (checkSpan('自行選位') !== 'check') {
-    var ticket = inputData.checktest.ticket;
-    var ticketNumber = inputData.checktest.ticketNumber;
-    var idNumbertext = inputData.checktest.idNumber;
-    var creditNumber = inputData.checktest.creditNumber;
-    var creditYear = inputData.checktest.creditYear;
-    var creditMonth = inputData.checktest.creditMonth;
-    var creditCheck = inputData.checktest.creditCheck;
 
-    //選要買的票價 [0] 就是第一個 依此類推..
-    if ((a = document.getElementsByClassName('btn-default plus')[ticket - 1])) {
-      console.log(123);
-      for (i = 0; i < ticketNumber; i++) {
-        a.click();
-      }
+  var ticket = inputData.checktest.ticket;
+  var ticketNumber = inputData.checktest.ticketNumber;
+  var idNumbertext = inputData.checktest.idNumber;
+  var creditNumber = inputData.checktest.creditNumber;
+  var creditYear = inputData.checktest.creditYear;
+  var creditMonth = inputData.checktest.creditMonth;
+  var creditCheck = inputData.checktest.creditCheck;
+
+  //選要買的票價 [0] 就是第一個 依此類推..
+  if ((a = document.getElementsByClassName('btn-default plus')[ticket - 1])) {
+    console.log(123);
+    for (i = 0; i < ticketNumber; i++) {
+      a.click();
     }
-    if ((a = document.getElementById('person_agree_terms'))) {
-      if (a.checked == false) {
-        a.click();
-      }
+  }
+  if ((a = document.getElementById('person_agree_terms'))) {
+    if (a.checked == false) {
+      a.click();
     }
-    if ((a = document.getElementsByName('captcha_answer')[0])) {
-      a.focus();
-      a.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-          if (
-            (a = document.getElementsByClassName(
-              'btn btn-primary btn-lg ng-isolate-scope'
-            )[0])
-          ) {
-            a.click();
-          }
+  }
+  if ((a = document.getElementsByName('captcha_answer')[0])) {
+    a.focus();
+    a.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        if (
+          (a = document.getElementsByClassName(
+            'btn btn-primary btn-lg ng-isolate-scope'
+          )[0])
+        ) {
+          a.click();
         }
-      });
-    } else {
-      if (
-        (a = document.getElementsByClassName(
-          'btn btn-primary btn-lg ng-isolate-scope'
-        )[0])
-      ) {
-        a.click();
       }
+    });
+  } else {
+    if (
+      (a = document.getElementsByClassName(
+        'btn btn-primary btn-lg ng-isolate-scope'
+      )[0])
+    ) {
+      a.click();
     }
-  } else if (checkClass('選購的票券', 'caption ng-binding') === 'check') {
+  }
+  if (checkClass('選購的票券', 'caption ng-binding') === 'check') {
     clickbtn('完成選位', '.btn-primary.ng-binding');
   }
   setTimeout(function () {
@@ -107,7 +107,9 @@ var always = (inputData) => {
         'btn btn-primary btn-lg ng-binding ng-isolate-scope'
       )[0])
     ) {
-      a.click();
+      setTimeout(() => {
+        a.click();
+      }, 500);
     }
     if ((a = document.getElementsByName('pickupType'))) {
       for (let index = 0; index < a.length; index++) {
